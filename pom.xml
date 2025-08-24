@@ -15,7 +15,7 @@
 	<groupId>io.coherity.shared.parent.spring</groupId>
 	<artifactId>parent-pom-spring</artifactId>
 	<name>Coherity Parent POM for Spring Boot</name>
-	<version>1.0.0</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<description>Parent POM for Coherity Spring Boot applications, inheriting from parent-pom-java</description>
