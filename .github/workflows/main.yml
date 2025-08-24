@@ -35,19 +35,31 @@ jobs:
         
     - name: Validate POM structure
       run: ./mvnw -s .github/workflows/ci-settings.xml validate
+      env:
+        MAVEN_USERNAME: ${{ github.actor }}
+        MAVEN_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Run dependency analysis
       run: ./mvnw -s .github/workflows/ci-settings.xml dependency:analyze-only
+      env:
+        MAVEN_USERNAME: ${{ github.actor }}
+        MAVEN_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Check Spring Boot compatibility
       run: |
         echo "Checking Spring Boot version compatibility..."
         ./mvnw -s .github/workflows/ci-settings.xml dependency:tree | grep spring-boot
+      env:
+        MAVEN_USERNAME: ${{ github.actor }}
+        MAVEN_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Test Spring Boot plugin integration
       run: |
         echo "Testing Spring Boot plugin integration..."
         ./mvnw -s .github/workflows/ci-settings.xml org.springframework.boot:spring-boot-maven-plugin:help
+      env:
+        MAVEN_USERNAME: ${{ github.actor }}
+        MAVEN_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
   publish-snapshot:
     name: Publish Spring Snapshot
